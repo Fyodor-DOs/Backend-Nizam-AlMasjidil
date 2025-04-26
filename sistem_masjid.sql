@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 26, 2025 at 08:40 AM
+-- Generation Time: Apr 26, 2025 at 06:10 PM
 -- Server version: 8.0.40
 -- PHP Version: 8.1.10
 
@@ -37,6 +37,14 @@ CREATE TABLE `donasi` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `donasi`
+--
+
+INSERT INTO `donasi` (`id`, `user_id`, `jumlah`, `metode_pembayaran`, `tanggal`, `keuangan_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 200000.00, 'transfer', '2025-04-26', 1, '2025-04-26 10:54:40', '2025-04-26 10:54:40'),
+(2, 1, 300000.00, 'tunai', '2025-04-26', 2, '2025-04-26 10:54:46', '2025-04-26 10:54:46');
 
 -- --------------------------------------------------------
 
@@ -88,6 +96,14 @@ CREATE TABLE `keuangan` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `keuangan`
+--
+
+INSERT INTO `keuangan` (`id`, `tipe_keuangan_id`, `jumlah`, `keterangan`, `tanggal`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, 1, 200000.00, 'Donasi dari John', '2025-04-26', 1, '2025-04-26 10:54:40', '2025-04-26 10:54:40'),
+(2, 1, 300000.00, 'Donasi dari John', '2025-04-26', 1, '2025-04-26 10:54:46', '2025-04-26 10:54:46');
 
 -- --------------------------------------------------------
 
@@ -177,7 +193,23 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (29, 'App\\Models\\User', 7, 'authToken', 'adbd54c1058a24063ce60131d3e9305b1d1fe1d53e8ab08f3e67cfc37e5b86e7', '[\"*\"]', NULL, NULL, '2025-04-26 01:39:05', '2025-04-26 01:39:05'),
 (30, 'App\\Models\\User', 1, 'authToken', '905d1ced9d4f9b90403ea2b26b8cb84ed9148bdaad8194929d93d9aa71e589c0', '[\"*\"]', NULL, NULL, '2025-04-26 01:39:28', '2025-04-26 01:39:28'),
 (31, 'App\\Models\\User', 2, 'authToken', 'ff57d6cc9efc240f0b834ac3c5716f29ef6501c8554a679e0b636b9ae05ca078', '[\"*\"]', NULL, NULL, '2025-04-26 01:39:38', '2025-04-26 01:39:38'),
-(32, 'App\\Models\\User', 3, 'authToken', '1acc16e55ec9209b0433b407cd93c317bef559696e6ee45b771c9ce5dec06689', '[\"*\"]', NULL, NULL, '2025-04-26 01:39:44', '2025-04-26 01:39:44');
+(32, 'App\\Models\\User', 3, 'authToken', '1acc16e55ec9209b0433b407cd93c317bef559696e6ee45b771c9ce5dec06689', '[\"*\"]', NULL, NULL, '2025-04-26 01:39:44', '2025-04-26 01:39:44'),
+(33, 'App\\Models\\User', 1, 'authToken', '1aa1457ef7556421f8f5d31776f849e4de84dd6b17bcdfa5df8a5b20125fff7f', '[\"*\"]', NULL, NULL, '2025-04-26 08:47:56', '2025-04-26 08:47:56'),
+(34, 'App\\Models\\User', 1, 'authToken', '4bb6c3bff29f75bcdcb2e2b813ed1e36f60f4ad5ec2c9251af8ed10d3689f69f', '[\"*\"]', '2025-04-26 08:48:00', NULL, '2025-04-26 08:47:58', '2025-04-26 08:48:00'),
+(35, 'App\\Models\\User', 1, 'authToken', 'f99a43d1d5b46bf126bb5c814fa101b0ab02cd00109f2090c6b093f069500357', '[\"*\"]', '2025-04-26 08:49:07', NULL, '2025-04-26 08:49:05', '2025-04-26 08:49:07'),
+(36, 'App\\Models\\User', 1, 'authToken', 'bec878510eb3f33708b13e3b0e79ec1ae2fb08662a0434aa4b2b5cf59ea78553', '[\"*\"]', '2025-04-26 08:59:14', NULL, '2025-04-26 08:52:09', '2025-04-26 08:59:14'),
+(37, 'App\\Models\\User', 1, 'authToken', '6801444a76656f703c64cb23c05f92d7c1d0ff970dc817d6a6b32be00a86376e', '[\"*\"]', '2025-04-26 09:00:05', NULL, '2025-04-26 08:59:56', '2025-04-26 09:00:05'),
+(38, 'App\\Models\\User', 1, 'authToken', '3ade0e31b43f6546af0396b130105df44f75f12d47098b53f8059bd7a6528f0a', '[\"*\"]', '2025-04-26 09:22:10', NULL, '2025-04-26 09:20:56', '2025-04-26 09:22:10'),
+(39, 'App\\Models\\User', 1, 'authToken', '3013e114ad6dd4b5acf53b29ac745dcfeb68295a8588bba62d1c37250235a67a', '[\"*\"]', '2025-04-26 09:22:21', NULL, '2025-04-26 09:22:15', '2025-04-26 09:22:21'),
+(40, 'App\\Models\\User', 1, 'authToken', '87a5969406213b804560b7661c6c5416b57851ba723b83fdba2dda6cb12fc006', '[\"*\"]', '2025-04-26 09:25:34', NULL, '2025-04-26 09:25:27', '2025-04-26 09:25:34'),
+(41, 'App\\Models\\User', 1, 'authToken', '0a2f875209b81a9a51cd4b071551748c17e1f378174711dedd555101d12bef3e', '[\"*\"]', '2025-04-26 09:32:38', NULL, '2025-04-26 09:30:29', '2025-04-26 09:32:38'),
+(42, 'App\\Models\\User', 1, 'authToken', 'ff5b8c892ddb03ce86eff7ce9a5633fdfcc63771a1d4dc9d2e619656cdc9de5d', '[\"*\"]', '2025-04-26 09:37:52', NULL, '2025-04-26 09:32:42', '2025-04-26 09:37:52'),
+(43, 'App\\Models\\User', 1, 'authToken', 'c0e1e5f8dc7038296a6701f99e836c70a637b584367c6017f3fac92c1172b02a', '[\"*\"]', '2025-04-26 09:57:35', NULL, '2025-04-26 09:38:05', '2025-04-26 09:57:35'),
+(44, 'App\\Models\\User', 1, 'authToken', '0aa0b1be73f79887cbf5fa8f37d46a331923905b2125a4907007c71656684163', '[\"*\"]', '2025-04-26 10:21:00', NULL, '2025-04-26 09:42:54', '2025-04-26 10:21:00'),
+(45, 'App\\Models\\User', 1, 'authToken', '8526308551b80ea56953a69cd3ad2f8de7b9fa3a4964f79f9b51e632d4df0683', '[\"*\"]', '2025-04-26 10:01:44', NULL, '2025-04-26 09:57:42', '2025-04-26 10:01:44'),
+(46, 'App\\Models\\User', 1, 'authToken', 'a6790f2bba4d4afe46e810d8775a72dc290ed3eb7340a49950663c1e3a4d4dcc', '[\"*\"]', '2025-04-26 10:11:47', NULL, '2025-04-26 10:01:48', '2025-04-26 10:11:47'),
+(47, 'App\\Models\\User', 1, 'authToken', '40237dc03ab366e3e366388ac787fa75e9edd092d6e9967dd21741e53ef49db5', '[\"*\"]', '2025-04-26 10:53:28', NULL, '2025-04-26 10:19:01', '2025-04-26 10:53:28'),
+(48, 'App\\Models\\User', 1, 'authToken', '6ec45b186d65000b255f85a626e450506c3140c4fdd55239564d8f10daefa73d', '[\"*\"]', '2025-04-26 11:08:40', NULL, '2025-04-26 10:53:33', '2025-04-26 11:08:40');
 
 -- --------------------------------------------------------
 
@@ -192,6 +224,14 @@ CREATE TABLE `tipe_keuangan` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tipe_keuangan`
+--
+
+INSERT INTO `tipe_keuangan` (`id`, `nama_tipe`, `deskripsi`, `created_at`, `updated_at`) VALUES
+(1, 'pemasukan', 'Dana masuk', '2025-04-26 17:20:52', '2025-04-26 17:20:52'),
+(2, 'pengeluaran', 'Dana keluar', '2025-04-26 17:20:52', '2025-04-26 17:20:52');
 
 -- --------------------------------------------------------
 
@@ -299,7 +339,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `donasi`
 --
 ALTER TABLE `donasi`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -317,7 +357,7 @@ ALTER TABLE `kegiatan`
 -- AUTO_INCREMENT for table `keuangan`
 --
 ALTER TABLE `keuangan`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `laporan_keuangan`
@@ -335,13 +375,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `tipe_keuangan`
 --
 ALTER TABLE `tipe_keuangan`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

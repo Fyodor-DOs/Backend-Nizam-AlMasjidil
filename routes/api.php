@@ -57,7 +57,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // **DONASI ROUTES (Jamaah bisa donasi, Admin/Takmir bisa melihat semua donasi)**
     Route::get('donasi', [DonasiController::class, 'index']);
     Route::get('donasi/{donasi}', [DonasiController::class, 'show']);
-    Route::middleware('role:jamaah')->post('donasi', [DonasiController::class, 'store']);
+    Route::middleware('auth:sanctum')->post('donasi', [DonasiController::class, 'store']);
 
     // **LAPORAN KEUANGAN ROUTES (Semua bisa melihat laporan)**
     Route::get('laporan-keuangan', [LaporanKeuanganController::class, 'index']);

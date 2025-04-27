@@ -28,13 +28,33 @@ Route::post('register', [AuthController::class, 'register']);  // Registrasi Use
 Route::post('login', [AuthController::class, 'login']);        // Login User
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('logout', [AuthController::class, 'logout']);  // Logout User
-    Route::get('profile', [AuthController::class, 'profile']); // Get Profil User
 
-    // **USER ROUTES (Hanya Admin yang bisa CRUD User)**
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('profile', [AuthController::class, 'profile']);
+
+    // **User Management (Admin Only)**
     Route::middleware('role:admin')->group(function () {
         Route::apiResource('users', UserController::class);
     });
+
+    // **Keuangan Management (Admin & Takmir)**
+    Route::middleware('role:admin,takmir')->group(function () {
+        Route::apiResource('keuangan', KeuanganController::class)->except(['show']);
+    });
+    Route::get('keuangan', [KeuanganController::class, 'index']);
+    Route::get('keuangan/{keuangan}', [KeuanganController::class, 'show']);
+
+    // **Donasi Management (Admin, Takmir, Jamaah)**
+    Route::middleware('role:admin,takmir,jamaah')->group(function () {
+        Route::post('donasi', [DonasiController::class, 'store']);
+    });
+    Route::get('donasi', [DonasiController::class, 'index']);
+    Route::get('donasi/{donasi}', [DonasiController::class, 'show']);
+
+    // **Laporan Keuangan (Semua role bisa akses)**
+    Route::get('laporan-keuangan', [LaporanKeuanganController::class, 'index']);
+    Route::get('laporan-keuangan/generate', [LaporanKeuanganController::class, 'generateReport']);
+
 
     // **KEGIATAN ROUTES (Admin & Takmir bisa CRUD, Jamaah hanya bisa melihat)**
     Route::get('kegiatan', [KegiatanController::class, 'index']);
@@ -44,22 +64,4 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('kegiatan/{kegiatan}', [KegiatanController::class, 'update']);
         Route::delete('kegiatan/{kegiatan}', [KegiatanController::class, 'destroy']);
     });
-
-    // **KEUANGAN ROUTES (Admin & Takmir bisa CRUD, Jamaah hanya bisa melihat laporan)**
-    Route::get('keuangan', [KeuanganController::class, 'index']);
-    Route::get('keuangan/{keuangan}', [KeuanganController::class, 'show']);
-    Route::middleware('role:admin,takmir')->group(function () {
-        Route::post('keuangan', [KeuanganController::class, 'store']);
-        Route::put('keuangan/{keuangan}', [KeuanganController::class, 'update']);
-        Route::delete('keuangan/{keuangan}', [KeuanganController::class, 'destroy']);
-    });
-
-    // **DONASI ROUTES (Jamaah bisa donasi, Admin/Takmir bisa melihat semua donasi)**
-    Route::get('donasi', [DonasiController::class, 'index']);
-    Route::get('donasi/{donasi}', [DonasiController::class, 'show']);
-    Route::middleware('auth:sanctum')->post('donasi', [DonasiController::class, 'store']);
-
-    // **LAPORAN KEUANGAN ROUTES (Semua bisa melihat laporan)**
-    Route::get('laporan-keuangan', [LaporanKeuanganController::class, 'index']);
-    Route::get('laporan-keuangan/generate', [LaporanKeuanganController::class, 'generateReport']);
 });

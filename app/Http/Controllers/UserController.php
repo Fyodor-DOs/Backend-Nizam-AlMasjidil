@@ -14,9 +14,18 @@ class UserController extends Controller
         $this->middleware('role:admin');
     }
 
+    // public function index()
+    // {
+    //     return response()->json(User::all());
+    // }
+
     public function index()
     {
-        return response()->json(User::all());
+        $this->middleware('role:admin');
+        
+        $users = User::all();
+        
+        return response()->json($users);
     }
 
     public function store(Request $request)

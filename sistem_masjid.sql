@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 25, 2025 at 03:05 PM
--- Server version: 8.0.40
+-- Generation Time: May 25, 2025 at 04:07 PM
+-- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -43,15 +43,16 @@ CREATE TABLE `donasi` (
 --
 
 INSERT INTO `donasi` (`id`, `user_id`, `jumlah`, `metode_pembayaran`, `tanggal`, `keuangan_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 200000.00, 'transfer', '2025-04-26', 1, '2025-04-26 10:54:40', '2025-04-26 10:54:40'),
-(2, 1, 300000.00, 'tunai', '2025-04-26', 2, '2025-04-26 10:54:46', '2025-04-26 10:54:46'),
-(3, 1, 1000000.00, 'tunai', '2025-04-28', 3, '2025-04-28 01:05:52', '2025-04-28 01:05:52'),
-(4, 1, 100000.00, 'transfer', '2025-05-05', 4, '2025-05-04 22:41:32', '2025-05-04 22:41:32'),
-(5, 1, 50000.00, 'tunai', '2025-05-20', 6, '2025-05-19 18:36:52', '2025-05-19 18:36:52'),
-(6, 1, 500000.00, 'transfer', '2025-05-25', 7, '2025-05-24 22:45:50', '2025-05-24 22:45:50'),
-(7, 1, 250000.00, 'e-wallet', '2025-05-25', 8, '2025-05-24 23:09:38', '2025-05-24 23:09:38'),
-(8, 1, 450000.00, 'tunai', '2025-05-25', 9, '2025-05-25 00:56:45', '2025-05-25 00:56:45'),
-(9, 1, 10000.00, 'transfer', '2025-05-25', 10, '2025-05-25 07:58:11', '2025-05-25 07:58:11');
+(1, 1, '200000.00', 'transfer', '2025-04-26', 1, '2025-04-26 10:54:40', '2025-04-26 10:54:40'),
+(2, 1, '300000.00', 'tunai', '2025-04-26', 2, '2025-04-26 10:54:46', '2025-04-26 10:54:46'),
+(3, 1, '1000000.00', 'tunai', '2025-04-28', 3, '2025-04-28 01:05:52', '2025-04-28 01:05:52'),
+(4, 1, '100000.00', 'transfer', '2025-05-05', 4, '2025-05-04 22:41:32', '2025-05-04 22:41:32'),
+(5, 1, '50000.00', 'tunai', '2025-05-20', 6, '2025-05-19 18:36:52', '2025-05-19 18:36:52'),
+(6, 1, '500000.00', 'transfer', '2025-05-25', 7, '2025-05-24 22:45:50', '2025-05-24 22:45:50'),
+(7, 1, '250000.00', 'e-wallet', '2025-05-25', 8, '2025-05-24 23:09:38', '2025-05-24 23:09:38'),
+(8, 1, '450000.00', 'tunai', '2025-05-25', 9, '2025-05-25 00:56:45', '2025-05-25 00:56:45'),
+(9, 1, '10000.00', 'transfer', '2025-05-25', 10, '2025-05-25 07:58:11', '2025-05-25 07:58:11'),
+(10, 1, '20000.00', 'e-wallet', '2025-05-25', 11, '2025-05-25 08:15:24', '2025-05-25 08:15:24');
 
 -- --------------------------------------------------------
 
@@ -120,16 +121,18 @@ CREATE TABLE `keuangan` (
 --
 
 INSERT INTO `keuangan` (`id`, `tipe_keuangan_id`, `jumlah`, `keterangan`, `tanggal`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 200000.00, 'Donasi dari John', '2025-04-26', 1, '2025-04-26 10:54:40', '2025-04-26 10:54:40'),
-(2, 1, 300000.00, 'Donasi dari John', '2025-04-26', 1, '2025-04-26 10:54:46', '2025-04-26 10:54:46'),
-(3, 1, 1000000.00, 'Donasi dari John', '2025-04-28', 1, '2025-04-28 01:05:52', '2025-04-28 01:05:52'),
-(4, 1, 100000.00, 'Donasi dari John', '2025-05-05', 1, '2025-05-04 22:41:32', '2025-05-04 22:41:32'),
-(5, 2, 10000.00, 'beli pensil', '2025-05-02', 1, '2025-05-04 22:42:55', '2025-05-04 22:42:55'),
-(6, 1, 50000.00, 'Donasi dari John', '2025-05-20', 1, '2025-05-19 18:36:52', '2025-05-19 18:36:52'),
-(7, 1, 500000.00, 'Donasi dari John', '2025-05-25', 1, '2025-05-24 22:45:50', '2025-05-24 22:45:50'),
-(8, 1, 250000.00, 'Donasi dari John', '2025-05-25', 1, '2025-05-24 23:09:38', '2025-05-24 23:09:38'),
-(9, 1, 450000.00, 'Donasi dari John', '2025-05-25', 1, '2025-05-25 00:56:45', '2025-05-25 00:56:45'),
-(10, 1, 10000.00, 'Donasi dari John', '2025-05-25', 1, '2025-05-25 07:58:11', '2025-05-25 07:58:11');
+(1, 1, '200000.00', 'Donasi dari John', '2025-04-26', 1, '2025-04-26 10:54:40', '2025-04-26 10:54:40'),
+(2, 1, '300000.00', 'Donasi dari John', '2025-04-26', 1, '2025-04-26 10:54:46', '2025-04-26 10:54:46'),
+(3, 1, '1000000.00', 'Donasi dari John', '2025-04-28', 1, '2025-04-28 01:05:52', '2025-04-28 01:05:52'),
+(4, 1, '100000.00', 'Donasi dari John', '2025-05-05', 1, '2025-05-04 22:41:32', '2025-05-04 22:41:32'),
+(5, 2, '10000.00', 'beli pensil', '2025-05-02', 1, '2025-05-04 22:42:55', '2025-05-04 22:42:55'),
+(6, 1, '50000.00', 'Donasi dari John', '2025-05-20', 1, '2025-05-19 18:36:52', '2025-05-19 18:36:52'),
+(7, 1, '500000.00', 'Donasi dari John', '2025-05-25', 1, '2025-05-24 22:45:50', '2025-05-24 22:45:50'),
+(8, 1, '250000.00', 'Donasi dari John', '2025-05-25', 1, '2025-05-24 23:09:38', '2025-05-24 23:09:38'),
+(9, 1, '450000.00', 'Donasi dari John', '2025-05-25', 1, '2025-05-25 00:56:45', '2025-05-25 00:56:45'),
+(10, 1, '10000.00', 'Donasi dari John', '2025-05-25', 1, '2025-05-25 07:58:11', '2025-05-25 07:58:11'),
+(11, 1, '20000.00', 'Donasi dari Admin', '2025-05-25', 1, '2025-05-25 08:15:24', '2025-05-25 08:15:24'),
+(12, 2, '30000.00', 'Beli air mineral 1 kardus', '2025-05-25', 1, '2025-05-25 08:16:49', '2025-05-25 08:16:49');
 
 -- --------------------------------------------------------
 
@@ -335,7 +338,13 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (143, 'App\\Models\\User', 1, 'authToken', '3401b3429eee8ed814368c1055b0df74a01a8749db3624c1b6794addabb9ca2f', '[\"*\"]', '2025-05-25 07:40:37', NULL, '2025-05-25 07:38:08', '2025-05-25 07:40:37'),
 (144, 'App\\Models\\User', 1, 'authToken', '5d317e035b62141a99d71981721c12e0300372e6ed4a4f9d1d9124bd1a95e1a5', '[\"*\"]', '2025-05-25 07:51:56', NULL, '2025-05-25 07:40:41', '2025-05-25 07:51:56'),
 (145, 'App\\Models\\User', 1, 'authToken', '07a1814f6982e53fe20a4818c8dba409b6e9c7699305339d769452e062d953db', '[\"*\"]', '2025-05-25 08:00:47', NULL, '2025-05-25 07:57:26', '2025-05-25 08:00:47'),
-(146, 'App\\Models\\User', 1, 'authToken', '12ef92e8a71132d6f56b71b02c4061c9c6832775cb938be8d0018b43c99aab25', '[\"*\"]', '2025-05-25 08:03:06', NULL, '2025-05-25 08:03:02', '2025-05-25 08:03:06');
+(146, 'App\\Models\\User', 1, 'authToken', '12ef92e8a71132d6f56b71b02c4061c9c6832775cb938be8d0018b43c99aab25', '[\"*\"]', '2025-05-25 08:03:06', NULL, '2025-05-25 08:03:02', '2025-05-25 08:03:06'),
+(147, 'App\\Models\\User', 1, 'authToken', '2d34508449b29bd8eb8066dff5d9c21822d40291384046faea2cd686f5f50fe4', '[\"*\"]', NULL, NULL, '2025-05-25 08:14:22', '2025-05-25 08:14:22'),
+(148, 'App\\Models\\User', 1, 'authToken', 'ff8f2514f433dff6d6b2b6c25bc466cd4676e88e80becdae67c7fea071607ed9', '[\"*\"]', '2025-05-25 08:40:27', NULL, '2025-05-25 08:14:26', '2025-05-25 08:40:27'),
+(149, 'App\\Models\\User', 1, 'authToken', '74851207847f09cb910bfc8870471c953ccc26f6bb4084ceeac7cc25f6b12e20', '[\"*\"]', '2025-05-25 08:44:33', NULL, '2025-05-25 08:44:18', '2025-05-25 08:44:33'),
+(150, 'App\\Models\\User', 3, 'authToken', 'adca7c56f7e29cb452686362ebfd3e229dd066a0d706f51e8f32b61effc28cd8', '[\"*\"]', '2025-05-25 08:51:02', NULL, '2025-05-25 08:49:33', '2025-05-25 08:51:02'),
+(151, 'App\\Models\\User', 3, 'authToken', '8e66eb0bd4f1d6690882ee1a8d21580f25e423e30eed5bfb01d594a79562e8fa', '[\"*\"]', '2025-05-25 08:54:33', NULL, '2025-05-25 08:53:48', '2025-05-25 08:54:33'),
+(152, 'App\\Models\\User', 1, 'authToken', 'f4f86a961964af2e77d343886f3a6c10392c4f68dbde289d7b051a8736bf7d2e', '[\"*\"]', '2025-05-25 09:05:51', NULL, '2025-05-25 09:05:46', '2025-05-25 09:05:51');
 
 -- --------------------------------------------------------
 
@@ -346,8 +355,8 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 CREATE TABLE `tausiyah` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
-  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `isi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `waktu` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -403,10 +412,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
-(1, 'John', 'john@gmail.com', '$2y$12$gyZXb7fpxJq66XhcqAKcHe3lDoMD5HDcI5rxI.nGzHfDeNRraUgDS', 'admin', '2025-04-26 01:39:28', '2025-04-26 01:39:28'),
-(2, 'Jane', 'jane@gmail.com', '$2y$12$u9bwzdW1JC3fNop6OZN3Ce8E6.nbQqXCCEHZtXd3V2OfEhvhiB3ke', 'takmir', '2025-04-26 01:39:38', '2025-04-26 01:39:38'),
+(1, 'Admin', 'admin@gmail.com', '$2y$12$gyZXb7fpxJq66XhcqAKcHe3lDoMD5HDcI5rxI.nGzHfDeNRraUgDS', 'admin', '2025-04-26 01:39:28', '2025-04-26 01:39:28'),
+(2, 'Takmir1', 'takmir1@gmail.com', '$2y$12$u9bwzdW1JC3fNop6OZN3Ce8E6.nbQqXCCEHZtXd3V2OfEhvhiB3ke', 'takmir', '2025-04-26 01:39:38', '2025-04-26 01:39:38'),
 (3, 'Ahmad', 'ahmad@gmail.com', '$2y$12$KPdAmvHs1IBiAIb5GpWEIe68WBgLN1w0jJtLzi/OqWo.ohuDNliG6', 'jamaah', '2025-04-26 01:39:44', '2025-04-26 01:39:44'),
-(5, 'Budi', 'budi@gmail.com', '$2y$12$GvWdKQNOb2aFrPgvYQbBSOnJXXag8boZcYxETG.Ntup.C15SIAEo2', 'takmir', '2025-04-26 23:55:24', '2025-04-26 23:55:24');
+(5, 'Takmir2', 'takmir2@gmail.com', '$2y$12$GvWdKQNOb2aFrPgvYQbBSOnJXXag8boZcYxETG.Ntup.C15SIAEo2', 'takmir', '2025-04-26 23:55:24', '2025-04-26 23:55:24');
 
 --
 -- Indexes for dumped tables
@@ -496,7 +505,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `donasi`
 --
 ALTER TABLE `donasi`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -514,7 +523,7 @@ ALTER TABLE `kegiatan`
 -- AUTO_INCREMENT for table `keuangan`
 --
 ALTER TABLE `keuangan`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `laporan_keuangan`
@@ -532,7 +541,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 
 --
 -- AUTO_INCREMENT for table `tausiyah`

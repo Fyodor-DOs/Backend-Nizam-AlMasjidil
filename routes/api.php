@@ -8,6 +8,7 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\LaporanKeuanganController;
+use App\Http\Controllers\TausiyahController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -63,5 +64,15 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('kegiatan', [KegiatanController::class, 'store']);
         Route::put('kegiatan/{kegiatan}', [KegiatanController::class, 'update']);
         Route::delete('kegiatan/{kegiatan}', [KegiatanController::class, 'destroy']);
+    });
+
+    // Admin dan Takmir bisa create/update/delete, Jamaah hanya bisa melihat
+    Route::get('tausiyah', [TausiyahController::class, 'index']);
+    Route::get('tausiyah/{tausiyah}', [TausiyahController::class, 'show']);
+
+    Route::middleware('role:admin,takmir')->group(function () {
+        Route::post('tausiyah', [TausiyahController::class, 'store']);
+        Route::put('tausiyah/{tausiyah}', [TausiyahController::class, 'update']);
+        Route::delete('tausiyah/{tausiyah}', [TausiyahController::class, 'destroy']);
     });
 });

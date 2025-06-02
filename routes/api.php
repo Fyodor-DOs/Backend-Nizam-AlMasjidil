@@ -28,6 +28,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register', [AuthController::class, 'register']);  // Registrasi User
 Route::post('login', [AuthController::class, 'login']);        // Login User
 
+// Route publik untuk lihat daftar dan detail tausiyah (tidak butuh login)
+Route::get('tausiyah', [TausiyahController::class, 'index']);
+Route::get('tausiyah/{tausiyah}', [TausiyahController::class, 'show']);
+
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('logout', [AuthController::class, 'logout']);
@@ -66,13 +70,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('kegiatan/{kegiatan}', [KegiatanController::class, 'destroy']);
     });
 
-    // Admin dan Takmir bisa create/update/delete, Jamaah hanya bisa melihat
-    Route::get('tausiyah', [TausiyahController::class, 'index']);
-    Route::get('tausiyah/{tausiyah}', [TausiyahController::class, 'show']);
-
-    Route::middleware('role:admin,takmir')->group(function () {
+    // Route yang butuh login dan role admin/takmir
+    Route::middleware(['auth:sanctum', 'role:admin,takmir'])->group(function () {
         Route::post('tausiyah', [TausiyahController::class, 'store']);
         Route::put('tausiyah/{tausiyah}', [TausiyahController::class, 'update']);
         Route::delete('tausiyah/{tausiyah}', [TausiyahController::class, 'destroy']);
-    });
+});
 });

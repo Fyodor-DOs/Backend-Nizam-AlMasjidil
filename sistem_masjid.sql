@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 25, 2025 at 04:07 PM
+-- Generation Time: Jun 10, 2025 at 08:44 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -52,7 +52,8 @@ INSERT INTO `donasi` (`id`, `user_id`, `jumlah`, `metode_pembayaran`, `tanggal`,
 (7, 1, '250000.00', 'e-wallet', '2025-05-25', 8, '2025-05-24 23:09:38', '2025-05-24 23:09:38'),
 (8, 1, '450000.00', 'tunai', '2025-05-25', 9, '2025-05-25 00:56:45', '2025-05-25 00:56:45'),
 (9, 1, '10000.00', 'transfer', '2025-05-25', 10, '2025-05-25 07:58:11', '2025-05-25 07:58:11'),
-(10, 1, '20000.00', 'e-wallet', '2025-05-25', 11, '2025-05-25 08:15:24', '2025-05-25 08:15:24');
+(10, 1, '20000.00', 'e-wallet', '2025-05-25', 11, '2025-05-25 08:15:24', '2025-05-25 08:15:24'),
+(11, 1, '50000.00', 'tunai', '2025-06-09', 14, '2025-06-08 23:26:12', '2025-06-08 23:26:12');
 
 -- --------------------------------------------------------
 
@@ -96,8 +97,8 @@ CREATE TABLE `kegiatan` (
 INSERT INTO `kegiatan` (`id`, `nama_kegiatan`, `deskripsi`, `tanggal`, `waktu`, `lokasi`, `gambar`, `created_by`, `created_at`, `updated_at`) VALUES
 (2, 'Pengajian', 'pengajian ibu-ibu sore', '2025-05-06', '15:15:00', 'Ruangan A', 'kegiatan/fS4B845wraYZ0hQxVBH0VlHKUjLAkQ80Vto22pQ1.png', 1, '2025-05-04 23:44:09', '2025-05-04 23:44:09'),
 (3, 'Kurban', 'kurban', '2025-05-09', '15:58:00', 'lapangan', 'kegiatan/sncGqJrX8enhy1gl8g8W9DiPgVMTpTTjMz2hAEwC.webp', 1, '2025-05-05 01:57:43', '2025-05-05 01:57:43'),
-(4, 'Tidur siang', 'program tidur siang manja', '2025-05-19', '12:29:00', 'Pulau Kapuk', 'kegiatan/49RtpIlHvFXVrYKg2dEGAxlYFRlWQWqw8JhayBAD.jpg', 1, '2025-05-18 22:29:43', '2025-05-18 22:29:43'),
-(5, 'Solat jumat', 'berjamaah', '2025-05-30', '11:15:00', 'Ruangan B', 'kegiatan/L8oxQcnVXmRbtWflzW48VFTUlKQ8npukjCmv2Sm4.webp', 1, '2025-05-24 22:50:11', '2025-05-24 22:50:11');
+(5, 'Solat jumat', 'berjamaah', '2025-05-30', '11:15:00', 'Ruangan B', 'kegiatan/L8oxQcnVXmRbtWflzW48VFTUlKQ8npukjCmv2Sm4.webp', 1, '2025-05-24 22:50:11', '2025-05-24 22:50:11'),
+(7, 'Hari raya idul adha', 'hari raya', '2025-06-09', '16:20:00', 'Lapangan A', 'kegiatan/myYwblckyRllIXlXQTcragz7RnjhQLA70o9jXhqX.jpg', 1, '2025-06-07 01:19:42', '2025-06-09 01:32:41');
 
 -- --------------------------------------------------------
 
@@ -111,6 +112,7 @@ CREATE TABLE `keuangan` (
   `jumlah` decimal(15,2) NOT NULL,
   `keterangan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `tanggal` date NOT NULL,
+  `gambar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_by` bigint UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -120,19 +122,23 @@ CREATE TABLE `keuangan` (
 -- Dumping data for table `keuangan`
 --
 
-INSERT INTO `keuangan` (`id`, `tipe_keuangan_id`, `jumlah`, `keterangan`, `tanggal`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 1, '200000.00', 'Donasi dari John', '2025-04-26', 1, '2025-04-26 10:54:40', '2025-04-26 10:54:40'),
-(2, 1, '300000.00', 'Donasi dari John', '2025-04-26', 1, '2025-04-26 10:54:46', '2025-04-26 10:54:46'),
-(3, 1, '1000000.00', 'Donasi dari John', '2025-04-28', 1, '2025-04-28 01:05:52', '2025-04-28 01:05:52'),
-(4, 1, '100000.00', 'Donasi dari John', '2025-05-05', 1, '2025-05-04 22:41:32', '2025-05-04 22:41:32'),
-(5, 2, '10000.00', 'beli pensil', '2025-05-02', 1, '2025-05-04 22:42:55', '2025-05-04 22:42:55'),
-(6, 1, '50000.00', 'Donasi dari John', '2025-05-20', 1, '2025-05-19 18:36:52', '2025-05-19 18:36:52'),
-(7, 1, '500000.00', 'Donasi dari John', '2025-05-25', 1, '2025-05-24 22:45:50', '2025-05-24 22:45:50'),
-(8, 1, '250000.00', 'Donasi dari John', '2025-05-25', 1, '2025-05-24 23:09:38', '2025-05-24 23:09:38'),
-(9, 1, '450000.00', 'Donasi dari John', '2025-05-25', 1, '2025-05-25 00:56:45', '2025-05-25 00:56:45'),
-(10, 1, '10000.00', 'Donasi dari John', '2025-05-25', 1, '2025-05-25 07:58:11', '2025-05-25 07:58:11'),
-(11, 1, '20000.00', 'Donasi dari Admin', '2025-05-25', 1, '2025-05-25 08:15:24', '2025-05-25 08:15:24'),
-(12, 2, '30000.00', 'Beli air mineral 1 kardus', '2025-05-25', 1, '2025-05-25 08:16:49', '2025-05-25 08:16:49');
+INSERT INTO `keuangan` (`id`, `tipe_keuangan_id`, `jumlah`, `keterangan`, `tanggal`, `gambar`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, 1, '200000.00', 'Donasi dari John', '2025-04-26', NULL, 1, '2025-04-26 10:54:40', '2025-04-26 10:54:40'),
+(2, 1, '300000.00', 'Donasi dari John', '2025-04-26', NULL, 1, '2025-04-26 10:54:46', '2025-04-26 10:54:46'),
+(3, 1, '1000000.00', 'Donasi dari John', '2025-04-28', NULL, 1, '2025-04-28 01:05:52', '2025-04-28 01:05:52'),
+(4, 1, '100000.00', 'Donasi dari John', '2025-05-05', NULL, 1, '2025-05-04 22:41:32', '2025-05-04 22:41:32'),
+(5, 2, '10000.00', 'beli pensil', '2025-05-02', NULL, 1, '2025-05-04 22:42:55', '2025-05-04 22:42:55'),
+(6, 1, '50000.00', 'Donasi dari John', '2025-05-20', NULL, 1, '2025-05-19 18:36:52', '2025-05-19 18:36:52'),
+(7, 1, '500000.00', 'Donasi dari John', '2025-05-25', NULL, 1, '2025-05-24 22:45:50', '2025-05-24 22:45:50'),
+(8, 1, '250000.00', 'Donasi dari John', '2025-05-25', NULL, 1, '2025-05-24 23:09:38', '2025-05-24 23:09:38'),
+(9, 1, '450000.00', 'Donasi dari John', '2025-05-25', NULL, 1, '2025-05-25 00:56:45', '2025-05-25 00:56:45'),
+(10, 1, '10000.00', 'Donasi dari John', '2025-05-25', NULL, 1, '2025-05-25 07:58:11', '2025-05-25 07:58:11'),
+(11, 1, '20000.00', 'Donasi dari Admin', '2025-05-25', NULL, 1, '2025-05-25 08:15:24', '2025-05-25 08:15:24'),
+(12, 2, '30000.00', 'Beli air mineral 1 kardus', '2025-05-25', NULL, 1, '2025-05-25 08:16:49', '2025-05-25 08:16:49'),
+(13, 2, '15000.00', 'Beli kue basah', '2025-05-26', NULL, 1, '2025-05-25 23:27:17', '2025-05-25 23:27:17'),
+(14, 1, '50000.00', 'Donasi dari Admin', '2025-06-09', NULL, 1, '2025-06-08 23:26:12', '2025-06-08 23:26:12'),
+(15, 2, '100000.00', 'Pembelian alat kebersihan', '2025-06-10', NULL, 1, '2025-06-08 23:26:41', '2025-06-08 23:26:41'),
+(16, 2, '50000.00', 'Pembelian bohlam lampu', '2025-06-03', '/storage/keuangan/ckA5AiPlcn1KRhClGT9TjQfta3eVwT5Lt4Chy4qB.jpg', 1, '2025-06-09 23:47:35', '2025-06-09 23:47:35');
 
 -- --------------------------------------------------------
 
@@ -178,7 +184,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2025_03_17_143222_create_donasis_table', 1),
 (9, '2025_03_17_143227_create_laporan_keuangans_table', 1),
 (10, '2025_05_04_134527_add_gambar_to_kegiatan_table', 2),
-(13, '2025_05_25_132837_create_tausiyah_table', 3);
+(13, '2025_05_25_132837_create_tausiyah_table', 3),
+(14, '2025_06_10_064614_add_gambar_to_keuangan_table', 4);
 
 -- --------------------------------------------------------
 
@@ -344,7 +351,47 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (149, 'App\\Models\\User', 1, 'authToken', '74851207847f09cb910bfc8870471c953ccc26f6bb4084ceeac7cc25f6b12e20', '[\"*\"]', '2025-05-25 08:44:33', NULL, '2025-05-25 08:44:18', '2025-05-25 08:44:33'),
 (150, 'App\\Models\\User', 3, 'authToken', 'adca7c56f7e29cb452686362ebfd3e229dd066a0d706f51e8f32b61effc28cd8', '[\"*\"]', '2025-05-25 08:51:02', NULL, '2025-05-25 08:49:33', '2025-05-25 08:51:02'),
 (151, 'App\\Models\\User', 3, 'authToken', '8e66eb0bd4f1d6690882ee1a8d21580f25e423e30eed5bfb01d594a79562e8fa', '[\"*\"]', '2025-05-25 08:54:33', NULL, '2025-05-25 08:53:48', '2025-05-25 08:54:33'),
-(152, 'App\\Models\\User', 1, 'authToken', 'f4f86a961964af2e77d343886f3a6c10392c4f68dbde289d7b051a8736bf7d2e', '[\"*\"]', '2025-05-25 09:05:51', NULL, '2025-05-25 09:05:46', '2025-05-25 09:05:51');
+(152, 'App\\Models\\User', 1, 'authToken', 'f4f86a961964af2e77d343886f3a6c10392c4f68dbde289d7b051a8736bf7d2e', '[\"*\"]', '2025-05-25 09:05:51', NULL, '2025-05-25 09:05:46', '2025-05-25 09:05:51'),
+(153, 'App\\Models\\User', 2, 'authToken', '85e7da90b4e8d71c7da3fa677fb03b611cddfefbd7ef015677f43e6cba6388de', '[\"*\"]', '2025-05-25 09:09:21', NULL, '2025-05-25 09:08:32', '2025-05-25 09:09:21'),
+(154, 'App\\Models\\User', 1, 'authToken', '62fbadc94db6f3cfc3ef4c513d14c1548fd5ed38ea2990024cc3cd97f6a8bf9c', '[\"*\"]', NULL, NULL, '2025-05-25 20:11:50', '2025-05-25 20:11:50'),
+(155, 'App\\Models\\User', 1, 'authToken', '4e6ae8cf11ac20bb6bbfaa63f9d9b19024bca3687aa7e076a6dea7478a221473', '[\"*\"]', '2025-05-25 20:12:26', NULL, '2025-05-25 20:11:53', '2025-05-25 20:12:26'),
+(156, 'App\\Models\\User', 1, 'authToken', '0a885f12ceb06c59e2599d2ce90861f2b75d754c3172596119ab67ae4dedb62e', '[\"*\"]', NULL, NULL, '2025-05-25 23:03:03', '2025-05-25 23:03:03'),
+(157, 'App\\Models\\User', 1, 'authToken', 'c5a017cfd2e3d7ef0ee87ecb9d83d459d5db40aa2e3cf004c6cacb4801666f7b', '[\"*\"]', '2025-05-25 23:03:12', NULL, '2025-05-25 23:03:05', '2025-05-25 23:03:12'),
+(158, 'App\\Models\\User', 3, 'authToken', '71d1973b36819ecbbbb953d30b37fb295daf012e9921578340d1f5e8be47a160', '[\"*\"]', '2025-05-25 23:07:57', NULL, '2025-05-25 23:07:01', '2025-05-25 23:07:57'),
+(159, 'App\\Models\\User', 1, 'authToken', 'e19063980757a8744143336d0ddcf5be339634e08566cf1a2767a31838b13d96', '[\"*\"]', '2025-05-25 23:18:36', NULL, '2025-05-25 23:13:33', '2025-05-25 23:18:36'),
+(160, 'App\\Models\\User', 1, 'authToken', 'a8ad98eb678718bc40eb53d227b7ff9c84a55ad458c8e08eef552d8bf7beb472', '[\"*\"]', '2025-05-25 23:19:15', NULL, '2025-05-25 23:19:09', '2025-05-25 23:19:15'),
+(161, 'App\\Models\\User', 1, 'authToken', 'f73f51055669ea4e87dcfa4852f73819b422800969011dfa4b512b4d7a38b34c', '[\"*\"]', '2025-05-25 23:30:39', NULL, '2025-05-25 23:21:16', '2025-05-25 23:30:39'),
+(162, 'App\\Models\\User', 1, 'authToken', 'a9cda30e4b51f23942b6f96c51864e4bf7b8d4e9d98224846992030809e3384f', '[\"*\"]', '2025-05-25 23:34:10', NULL, '2025-05-25 23:31:11', '2025-05-25 23:34:10'),
+(163, 'App\\Models\\User', 1, 'authToken', '689a0f6edf38134e0c829c433bf4ec6f6f565f8b322a604af8324c0ea76fb68b', '[\"*\"]', '2025-05-25 23:45:18', NULL, '2025-05-25 23:37:04', '2025-05-25 23:45:18'),
+(164, 'App\\Models\\User', 1, 'authToken', 'e8b593351aea09eae72228b96156c6e035b54dee0fe449207c886caa326632bc', '[\"*\"]', '2025-05-25 23:45:55', NULL, '2025-05-25 23:45:46', '2025-05-25 23:45:55'),
+(165, 'App\\Models\\User', 1, 'authToken', '524678debf65c17a063f1aa39002786e8c82f8d60d5234feab9adeec861f6bfd', '[\"*\"]', '2025-05-26 00:49:55', NULL, '2025-05-26 00:49:50', '2025-05-26 00:49:55'),
+(166, 'App\\Models\\User', 1, 'authToken', '47fba87bf4dd66827e2ed2dbd7e8426f190c35431bb535a8f0315a8d3851834f', '[\"*\"]', '2025-05-26 00:57:58', NULL, '2025-05-26 00:57:55', '2025-05-26 00:57:58'),
+(167, 'App\\Models\\User', 1, 'authToken', 'a56109cd5748b28e262659fb93d86187549e351b499a13e8d6e8506d65ed01b1', '[\"*\"]', '2025-05-26 01:24:01', NULL, '2025-05-26 01:01:39', '2025-05-26 01:24:01'),
+(168, 'App\\Models\\User', 1, 'authToken', '252142e1beef852b8df9ff14343e2c7f2ec386c7dee3128008a53206ea9abf86', '[\"*\"]', '2025-05-26 01:30:23', NULL, '2025-05-26 01:29:23', '2025-05-26 01:30:23'),
+(169, 'App\\Models\\User', 1, 'authToken', '82d5dbd05ae3dcf8268c7a0b3360cdf6acda989c30698a1b6322c6ae7c6deba2', '[\"*\"]', '2025-06-01 22:06:43', NULL, '2025-06-01 21:53:38', '2025-06-01 22:06:43'),
+(170, 'App\\Models\\User', 1, 'authToken', '7805bcb14eeb71f3720e3384cc3a519e723688999ca7c17c3e527d773dfca83b', '[\"*\"]', '2025-06-02 00:44:06', NULL, '2025-06-01 22:09:10', '2025-06-02 00:44:06'),
+(171, 'App\\Models\\User', 1, 'authToken', '00cd4cad27e7b94558f0f2d1865636db77e6aaa5758dd8708341740b7f844ebd', '[\"*\"]', '2025-06-02 00:47:42', NULL, '2025-06-02 00:46:26', '2025-06-02 00:47:42'),
+(172, 'App\\Models\\User', 1, 'authToken', '783898fff6991444e433c416a3f5b795e2580f42c7b3928225ec0f49287df8b2', '[\"*\"]', '2025-06-02 00:49:22', NULL, '2025-06-02 00:49:17', '2025-06-02 00:49:22'),
+(173, 'App\\Models\\User', 1, 'authToken', 'b5277f45cf658636fa8aa4af57dae6069aec29acf468574221943b3b877bc6c1', '[\"*\"]', '2025-06-02 00:54:36', NULL, '2025-06-02 00:54:16', '2025-06-02 00:54:36'),
+(174, 'App\\Models\\User', 1, 'authToken', 'eaba129e4d2c8fa94646e875c87fac57205d9c12030844bc5bbfef3f6468c31e', '[\"*\"]', '2025-06-02 01:09:11', NULL, '2025-06-02 01:04:04', '2025-06-02 01:09:11'),
+(175, 'App\\Models\\User', 1, 'authToken', 'a45556af0b32209f2d9bc15e61328a0a5153b5b6287c24aff55a0d834053bd57', '[\"*\"]', '2025-06-02 05:00:05', NULL, '2025-06-02 04:58:40', '2025-06-02 05:00:05'),
+(176, 'App\\Models\\User', 1, 'authToken', '4c96a5579aed0dcc86fb631006a02785ed190dee395bc4e82fdb763e574ebdfa', '[\"*\"]', '2025-06-03 17:53:32', NULL, '2025-06-03 17:52:34', '2025-06-03 17:53:32'),
+(177, 'App\\Models\\User', 1, 'authToken', 'a0e7090a42494e7adde7a9b7e166e159594b7b3b6da65c785232fec8f5e60e99', '[\"*\"]', '2025-06-03 17:56:51', NULL, '2025-06-03 17:53:49', '2025-06-03 17:56:51'),
+(178, 'App\\Models\\User', 1, 'authToken', 'f7ff6ddea4a279223c7d5d960c0ff275ca75fce40574a60ee057d0bf047870b6', '[\"*\"]', '2025-06-04 08:54:00', NULL, '2025-06-04 08:53:51', '2025-06-04 08:54:00'),
+(179, 'App\\Models\\User', 1, 'authToken', '7e92ad319d85c4adf4901b62b906078ad0a6066ca07a2296e6ca468cc6acb92f', '[\"*\"]', '2025-06-07 01:12:11', NULL, '2025-06-07 01:08:02', '2025-06-07 01:12:11'),
+(180, 'App\\Models\\User', 1, 'authToken', 'd405e63bc36fdbaa7a061f72abe7da9e14736339a5833e2ac58fbbc86cf01c20', '[\"*\"]', '2025-06-07 01:27:43', NULL, '2025-06-07 01:12:28', '2025-06-07 01:27:43'),
+(181, 'App\\Models\\User', 1, 'authToken', '9ba55c0fe49c26543e51fe8661032c7fb0603c1a07b0549b9187c7fa9829f965', '[\"*\"]', '2025-06-07 01:30:57', NULL, '2025-06-07 01:28:58', '2025-06-07 01:30:57'),
+(182, 'App\\Models\\User', 1, 'authToken', 'd7554024a15dfb8dfcdd72e839182aa6beed353411c2deb9efc07527fb92ed35', '[\"*\"]', '2025-06-07 01:33:15', NULL, '2025-06-07 01:33:12', '2025-06-07 01:33:15'),
+(183, 'App\\Models\\User', 1, 'authToken', 'e11cef740b152b744b96fcd222c2bcafdc855258a32125c5dee416c9d60275d7', '[\"*\"]', '2025-06-08 23:17:44', NULL, '2025-06-08 23:15:39', '2025-06-08 23:17:44'),
+(184, 'App\\Models\\User', 6, 'authToken', '9bdd3b44f5794438bebbf816507efd8874116425fe9f3e28dca0e93ebf89c1b4', '[\"*\"]', NULL, NULL, '2025-06-08 23:23:55', '2025-06-08 23:23:55'),
+(185, 'App\\Models\\User', 6, 'authToken', '0c7bf1911aef7eb97810b645137a08c86723a61e9e9e9b9a31e8ba3e90144b38', '[\"*\"]', '2025-06-08 23:25:36', NULL, '2025-06-08 23:24:08', '2025-06-08 23:25:36'),
+(186, 'App\\Models\\User', 1, 'authToken', '0ad15fcd406af96dd1cfa7d53ac2cf0cb5d871a7c6fdad17b800dbd3a50b2936', '[\"*\"]', '2025-06-08 23:47:24', NULL, '2025-06-08 23:25:55', '2025-06-08 23:47:24'),
+(187, 'App\\Models\\User', 1, 'authToken', 'fa4083a7eb134b6a1c14244a335d2a10e8afa0f7922eb3d0b014f891074a0d97', '[\"*\"]', '2025-06-09 00:46:46', NULL, '2025-06-08 23:49:15', '2025-06-09 00:46:46'),
+(188, 'App\\Models\\User', 1, 'authToken', 'e62c3dbda596643104513b2ead8f59a3b9235e9485f9ef4ecba31daeedee769a', '[\"*\"]', '2025-06-09 01:40:01', NULL, '2025-06-09 00:47:34', '2025-06-09 01:40:01'),
+(189, 'App\\Models\\User', 1, 'authToken', '90e5522dcaa6a6207cea982215121f5163466d47d9773edefa5cc9fc659c3f29', '[\"*\"]', '2025-06-09 01:47:36', NULL, '2025-06-09 01:42:32', '2025-06-09 01:47:36'),
+(190, 'App\\Models\\User', 1, 'authToken', '20c5b440bc9d83cdfb0d24d20176e7908c78da37acefe09f20160613346d7e2b', '[\"*\"]', '2025-06-09 01:48:49', NULL, '2025-06-09 01:48:30', '2025-06-09 01:48:49'),
+(191, 'App\\Models\\User', 1, 'authToken', '6f3028d90067d0a18c51e8b9e9cdbccee5d0818a754515a1defcba842a99abe0', '[\"*\"]', '2025-06-09 01:55:09', NULL, '2025-06-09 01:53:44', '2025-06-09 01:55:09'),
+(192, 'App\\Models\\User', 1, 'authToken', '2848841532b0d415b8ec3108b85cfa3a8de646d0ceef4777a5021a106ca015f8', '[\"*\"]', '2025-06-10 01:39:58', NULL, '2025-06-09 22:51:19', '2025-06-10 01:39:58');
 
 -- --------------------------------------------------------
 
@@ -415,7 +462,8 @@ INSERT INTO `users` (`id`, `nama`, `email`, `password`, `role`, `created_at`, `u
 (1, 'Admin', 'admin@gmail.com', '$2y$12$gyZXb7fpxJq66XhcqAKcHe3lDoMD5HDcI5rxI.nGzHfDeNRraUgDS', 'admin', '2025-04-26 01:39:28', '2025-04-26 01:39:28'),
 (2, 'Takmir1', 'takmir1@gmail.com', '$2y$12$u9bwzdW1JC3fNop6OZN3Ce8E6.nbQqXCCEHZtXd3V2OfEhvhiB3ke', 'takmir', '2025-04-26 01:39:38', '2025-04-26 01:39:38'),
 (3, 'Ahmad', 'ahmad@gmail.com', '$2y$12$KPdAmvHs1IBiAIb5GpWEIe68WBgLN1w0jJtLzi/OqWo.ohuDNliG6', 'jamaah', '2025-04-26 01:39:44', '2025-04-26 01:39:44'),
-(5, 'Takmir2', 'takmir2@gmail.com', '$2y$12$GvWdKQNOb2aFrPgvYQbBSOnJXXag8boZcYxETG.Ntup.C15SIAEo2', 'takmir', '2025-04-26 23:55:24', '2025-04-26 23:55:24');
+(5, 'Takmir2', 'takmir2@gmail.com', '$2y$12$GvWdKQNOb2aFrPgvYQbBSOnJXXag8boZcYxETG.Ntup.C15SIAEo2', 'takmir', '2025-04-26 23:55:24', '2025-04-26 23:55:24'),
+(6, 'Fulan Rokhimah', 'fulan@gmail.com', '$2y$12$DIasP0QS.AouS2qFMml9..y31AvE8V/9vAWv1x03KLhWoia.KkCkK', 'jamaah', '2025-06-08 23:23:55', '2025-06-08 23:23:55');
 
 --
 -- Indexes for dumped tables
@@ -505,7 +553,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `donasi`
 --
 ALTER TABLE `donasi`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -517,13 +565,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `keuangan`
 --
 ALTER TABLE `keuangan`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `laporan_keuangan`
@@ -535,13 +583,13 @@ ALTER TABLE `laporan_keuangan`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- AUTO_INCREMENT for table `tausiyah`
@@ -559,7 +607,7 @@ ALTER TABLE `tipe_keuangan`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

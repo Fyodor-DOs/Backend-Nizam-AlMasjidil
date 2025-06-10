@@ -17,3 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Pengecualian untuk folder kegiatan
+!/storage/app/public/kegiatan/
+!/storage/app/public/kegiatan/*

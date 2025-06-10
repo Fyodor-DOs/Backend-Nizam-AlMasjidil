@@ -10,7 +10,7 @@ class Keuangan extends Model
     use HasFactory;
 
     protected $table = 'keuangan';
-    protected $fillable = ['tipe_keuangan_id', 'jumlah', 'keterangan', 'tanggal', 'created_by'];
+    protected $fillable = ['tipe_keuangan_id', 'jumlah', 'keterangan', 'tanggal', 'created_by', 'gambar'];
 
     // Relasi: Keuangan memiliki satu kategori (pemasukan/pengeluaran)
     public function tipeKeuangan()

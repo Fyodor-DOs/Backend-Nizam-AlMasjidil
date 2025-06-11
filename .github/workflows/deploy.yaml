@@ -1,41 +1,32 @@
-name: Masjid Nizam BE
+name: Deploy Laravel ke VPS
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
         with:
-          php-version: '8.3'
-
-      - name: Install dependencies
-        run: |
-          composer install --no-interaction --prefer-dist --optimize-autoloader
-
-      - name: Copy .env
-        run: cp .env.example .env
-
-      - name: Generate key
-        run: php artisan key:generate
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            cd /var/www/html/masjid-be
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+            cd ${{ secrets.DEPLOY_DIR }}
             git pull origin main
-            composer install --no-dev
+            composer install --no-dev --optimize-autoloader
             php artisan migrate --force
             php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            sudo systemctl restart apache2
+          EOF
